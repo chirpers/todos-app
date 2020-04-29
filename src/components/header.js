@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
-import { Toolbar, AppBar } from '@material-ui/core';
+import { Toolbar, AppBar, Avatar} from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import { reset } from 'cooldux';
 
@@ -29,6 +29,14 @@ const baseStyles = {
   },
 };
 
+function getAvatar(user) {
+  if(user && user.options && user.options.providers && user.options.providers[user.options.ll] && user.options.providers[user.options.ll].avatar) {
+    return user.options.providers[user.options.ll].avatar;
+  }
+  return null;
+}
+
+
 class Header extends Component {
   constructor(props) {
     super(props);
@@ -45,7 +53,7 @@ class Header extends Component {
 
   render() {
     const { user } = this.props;
-
+    const avatar = getAvatar(user.auth);
     let btn = (
       <Link to="/app">
         <Button
@@ -70,9 +78,9 @@ class Header extends Component {
       <AppBar position="static">
         <Toolbar style={baseStyles.header}>
 
-            <Link to="/">
-              <img alt="Home" style={baseStyles.logo} src="favicon.ico" />
-            </Link>
+            {avatar ? (
+              <Avatar src={avatar} style={{marginRight: '15px'}}/>
+            ) : ''}
 
             {btn}
         </Toolbar>

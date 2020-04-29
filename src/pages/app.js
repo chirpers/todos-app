@@ -26,6 +26,11 @@ const styles = {
     // borderRadius: '5px',
     padding: '5px',
     // float: 'right',
+  },
+  hello: {
+    display: 'flex',
+    float: 'left',
+    margin: '10px'
   }
 };
 
@@ -63,7 +68,7 @@ class App extends Component {
     return (
       <div style={styles.container}>
         <Header {...this.props} />
-        <div style={styles.mainBody}>hello {user.auth ? user.auth.name : ''}</div>
+        <div style={styles.hello}>hello, {user.auth ? user.auth.name : ''}</div>
         {user.auth ? (
           <div>
             <h2>My Todo list</h2>
