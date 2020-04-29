@@ -83,7 +83,7 @@ class Login extends Component {
               <Button
                 variant="contained"
                 color="primary"
-                onClick={() => this.handleOauth('google')}
+                onClick={() => document.location.href = user.oauthStart.providers.google.url}
                 style={{margin: '10px', width: '220px', color: 'black', backgroundColor: '#FFF'}}
               >
                 <span style={{...styles.loginBrand, color: '#4285F4'}}>
@@ -100,7 +100,7 @@ class Login extends Component {
               <Button
                 variant="contained"
                 color="primary"
-                onClick={() => this.handleOauth('github')}
+                onClick={() => document.location.href = user.oauthStart.providers.github.url}
                 style={{margin: '10px', width: '220px', color: '#FFF', backgroundColor: '#333'}}
               >
                 <span style={styles.loginBrand}>
@@ -117,7 +117,7 @@ class Login extends Component {
               <Button
                 variant="contained"
                 color="primary"
-                onClick={() => this.handleOauth('facebook')}
+                onClick={() => document.location.href = user.oauthStart.providers.facebook.url}
                 style={{margin: '10px', width: '220px', color: '#FFF', backgroundColor: '#3b5998'}}
               >
                 <span style={styles.loginBrand}>
@@ -134,7 +134,7 @@ class Login extends Component {
               <Button
                 variant="contained"
                 color="primary"
-                onClick={() => this.handleOauth('amazon')}
+                onClick={() => document.location.href = user.oauthStart.providers.amazon.url}
                 style={{margin: '10px', width: '220px', color: '#040707', backgroundColor: '#FF9900'}}
               >
                 <span style={styles.loginBrand}>
@@ -145,12 +145,12 @@ class Login extends Component {
             </>
             ) : ''}
 
-            {get(user, 'oauthStart.providers.amazon') ? (
+            {get(user, 'oauthStart.providers.microsoft') ? (
             <>
               <Button
                 variant="contained"
                 color="primary"
-                onClick={() => this.handleOauth('microsoft')}
+                onClick={() => document.location.href = user.oauthStart.providers.microsoft.url}
                 style={{margin: '10px', width: '220px', color: '#FFF', backgroundColor: '#2f2f2f'}}
               ><span style={{...styles.loginBrand, color: '#00a2ed'}}>
                 <i className="fab fa-windows"></i>
