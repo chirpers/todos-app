@@ -78,6 +78,8 @@ class Login extends Component {
             <div style={styles.errorText}>{errorMsg}</div>
             <div style={styles.form}>
 
+            {get(user, 'oauthStart.providers.google') ? (
+            <>
               <Button
                 variant="contained"
                 color="primary"
@@ -90,7 +92,11 @@ class Login extends Component {
                 <span style={styles.loginBrandText}>Sign in with Google</span>
               </Button>
               <br/>
+            </>
+            ) : ''}
 
+            {get(user, 'oauthStart.providers.github') ? (
+            <>
               <Button
                 variant="contained"
                 color="primary"
@@ -103,8 +109,11 @@ class Login extends Component {
                 <span style={styles.loginBrandText}>Sign in with Github</span>
               </Button>
               <br/>
+            </>
+            ) : ''}
 
-
+            {get(user, 'oauthStart.providers.facebook') ? (
+            <>
               <Button
                 variant="contained"
                 color="primary"
@@ -117,7 +126,11 @@ class Login extends Component {
                 <span style={styles.loginBrandText}>Sign in with Facebook</span>
               </Button>
               <br/>
+            </>
+            ) : ''}
 
+            {get(user, 'oauthStart.providers.amazon') ? (
+            <>
               <Button
                 variant="contained"
                 color="primary"
@@ -129,6 +142,11 @@ class Login extends Component {
                 </span>
                 <span style={styles.loginBrandText}>Sign in with Amazon</span></Button>
               <br/>
+            </>
+            ) : ''}
+
+            {get(user, 'oauthStart.providers.amazon') ? (
+            <>
               <Button
                 variant="contained"
                 color="primary"
@@ -138,8 +156,11 @@ class Login extends Component {
                 <i className="fab fa-windows"></i>
               </span>
               <span style={styles.loginBrandText}>Sign in with Microsoft</span></Button>
-
+            </>
+            ) : ''}
+            
             </div>
+           
             
           </Card>  
         ) : (<CircularProgress/>)}
