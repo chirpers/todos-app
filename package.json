@@ -13,7 +13,6 @@
     "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-react": "^7.12.4",
     "lodash": "^4.17.11",
-    "mqtt": "^4.0.1",
     "prop-types": "^15.7.0",
     "query-string": "^6.12.1",
     "react": "^16.8.1",
