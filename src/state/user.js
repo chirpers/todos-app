@@ -1,13 +1,14 @@
 import { resetReducer, makeDuck, promiseHandler } from 'cooldux';
-import { apiFetch } from '../lib/fetch';
+import client from '../lib/client';
+
 
 const { verifyEnd, verifyHandler, verifyReducer } = promiseHandler('verify', { namespace: 'user', throwErrors: true });
 
 const duck = makeDuck({
-  validate: (token) => apiFetch(`/users/validate/${token}`, { method: 'PUT' }),
-  oauthStart: () => apiFetch('/users/oauth_start'),
-  oauthLogin: (token) => apiFetch(`/users/oauth_token`, { method: 'POST', body: {token} }),
-  logout: async () => apiFetch('/users/logout'),
+  validate: (token) => client.apiFetch(`/users/validate/${token}`, { method: 'PUT' }),
+  oauthStart: client.oauthStart,
+  oauthLogin: client.tokenLogin,
+  logout: async () => client.apiFetch('/users/logout'),
 }, { namespace: 'user', throwErrors: true });
 
 const {
@@ -18,7 +19,7 @@ const {
 export function verify() {
   return (dispatch, getState) => {
     const { auth } = getState().user;
-    const promise = auth ? Promise.resolve(auth) : apiFetch('/users/me');
+    const promise = auth ? Promise.resolve(auth) : client.apiFetch('/users/me');
     return verifyHandler(promise, dispatch);
   }
 }

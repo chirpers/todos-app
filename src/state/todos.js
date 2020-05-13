@@ -1,5 +1,7 @@
 import { resetReducer, makeDuck } from 'cooldux';
-import { apiFetch } from '../lib/fetch';
+import client from '../lib/client';
+
+const { apiFetch } = client;
 
 const duck = makeDuck({
   browseTodos: () => apiFetch(`/todos`),

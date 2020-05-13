@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Header from '../components/header';
 import { browseTodos, addTodo, delTodo, editTodo } from '../state/todos';
+import { message } from '../state/messages';
 import { map } from 'lodash';
 import { Button, TextField, Card, CircularProgress } from '@material-ui/core'
 import DoneIcon from '@material-ui/icons/Done';
@@ -63,6 +64,16 @@ class App extends Component {
     this.props.browseTodos();
   }
 
+  // handleMessage = () => {
+  //   if(!client.mqttClient) {
+  //     client.connect();
+  //     client.on('json', (topic, msg) => {
+  //       console.log('json received', topic, msg);
+  //     });
+  //   }
+  //   this.props.message({to_id: this.props.user.auth._id, message: {yo: 'hi ' + Math.random()}})
+  // }
+
   render() {
     const { user, todos } = this.props;
     return (
@@ -117,4 +128,4 @@ function mapStateToProps(state) {
 }
 
 
-export default connect(mapStateToProps, {browseTodos, addTodo, delTodo, editTodo})(App);
+export default connect(mapStateToProps, {browseTodos, addTodo, delTodo, editTodo, message})(App);
