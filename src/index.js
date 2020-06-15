@@ -11,6 +11,7 @@ import logger from 'redux-logger';
 
 import theme from './theme';
 import reducers from './state';
+import config from './config';
 
 import Home from './pages/home';
 import App from './pages/app';
@@ -23,7 +24,7 @@ import './index.css';
 
 const middlewares = [thunkMiddleware, promiseMiddleware];
 
-if (process.env.NODE_ENV === 'development') {
+if (config.env !== 'production') {
   middlewares.push(logger);
 }
 

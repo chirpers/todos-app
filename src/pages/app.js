@@ -6,6 +6,7 @@ import { message } from '../state/messages';
 import { map } from 'lodash';
 import { Button, TextField, Card, CircularProgress } from '@material-ui/core'
 import DoneIcon from '@material-ui/icons/Done';
+import client from '../lib/client';
 
 import { colors } from '../lib/styles';
 
@@ -43,6 +44,12 @@ class App extends Component {
   componentDidMount() {
     if(this.props.user.auth) {
       this.props.browseTodos();
+      client.connect();
+      client.subscribe('foo', (ok) => {
+        console.log('subscribed', ok);
+      });
+      client.on('error', (e) => console.log('client error', e));
+      client.on('closed', (e) => console.log('client closed', e));
     }
   }
 
