@@ -39,11 +39,11 @@ const styles = {
 
 class OauthLogin extends Component {
   async componentDidMount() {
-    console.log('oauthlogin', this.props);
-    await this.props.oauthLogin(this.props.routeParams.token);
-    setTimeout(() => {
+    // console.log('oauthlogin', this.props);
+    // await this.props.oauthLogin(this.props.routeParams.token);
+    // setTimeout(() => {
       this.props.router.push('/app');
-    }, 100);
+    // }, 100);
   }
 
   render() {

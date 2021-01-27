@@ -46,7 +46,7 @@ const styles = {
 class Login extends Component {
 
   componentDidMount() {
-    this.props.oauthStart();
+    this.props.oauthStart(config.MODE);
   }
 
   handleChange = (evt) => {
